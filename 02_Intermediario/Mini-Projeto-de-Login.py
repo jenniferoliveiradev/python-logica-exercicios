@@ -2,9 +2,9 @@ usuario = "admin"
 senha = "python123"
 
 for i in range(3):
-    temtativa_usuario = input("Digite o usuario: ")
-    temtativa_senha = input("Digite a senha: ")
-    if temtativa_usuario == usuario and temtativa_senha == senha:
+    tentativa_usuario = input("Digite o usuario: ")
+    tentativa_senha = input("Digite a senha: ")
+    if tentativa_usuario == usuario and tentativa_senha == senha:
         print(f"Acesso Permitido: \nSeja Bem-Vindo {usuario}")
         break
     else:
