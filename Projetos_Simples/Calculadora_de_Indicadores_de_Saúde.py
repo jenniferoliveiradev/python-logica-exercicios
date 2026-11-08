@@ -1,4 +1,3 @@
-
 def calcular_imc(peso, altura):
     imc = peso / (altura * altura)
     return imc
@@ -17,33 +16,33 @@ def exibir_resultado(nome, imc, classificacao):
 
 
 def calcular_pressao(sistolica, diastolica):
-    if sistolica < 120 and diastolica < 80:
-        return  "Normal"
-    elif sistolica >= 120 and sistolica <= 139 or diastolica >= 80 and diastolica <= 89:
-        return"Pré-hipertensão"
-    elif sistolica >= 140 or diastolica >= 90:
+    if sistolica >= 140 or diastolica >= 90:
         return "Hipertensão"
+    elif sistolica >= 120 or diastolica >= 80:
+        return "Pré-hipertensão"
+    else:
+        return "Normal"
 
 def calcular_taxa_glicemia(glicemia, jejum):
     if jejum == True:
         if glicemia < 70:
             return "Hipoglicemia"
-        elif glicemia >= 70 and glicemia <= 99:
+        elif glicemia < 100:
             return "Normal"
-        elif glicemia >= 100 and glicemia <= 125:
+        elif glicemia <= 125:
             return "Pré-diabetes"
-        elif glicemia > 125:
+        else:
             return "Diabetes"
     if jejum == False:
         if glicemia < 140:
             return "Normal"
-        elif glicemia  >= 140 and glicemia <= 199:
-            return "Pré-diabetes"
         elif glicemia < 200:
+            return "Pré-diabetes"
+        else:
             return "Diabetes"
         
-def exibir_relatorio(nome, imc, pressao, glicemia):
-    print(f"{nome}, seu imc é: {imc:.2f}, sua pressão esta: {pressao}, sua glicemia esta: {glicemia}")
+def exibir_relatorio(nome, imc, classificacao, pressao, glicemia):
+    print(f"{nome}, seu imc é: {imc:.2f} e a classificação esta: {classificacao}, sua pressão esta: {pressao}, sua glicemia esta: {glicemia}")
 
 nome = input("Qual o seu nome? ")
 peso = float(input("Qual o seu peso? "))
@@ -56,8 +55,6 @@ jejum = input("Está em jejum? (s/n): ") == "s"
 imc = calcular_imc(peso, altura)
 pressao = calcular_pressao(pressao_sistolica, pressao_diastolica)
 glicemia_resultado = calcular_taxa_glicemia(glicemia, jejum)
-
-exibir_relatorio(nome, imc, pressao, glicemia_resultado)
-
-
+classificacao = classificar_imc(imc)
+exibir_relatorio(nome, imc, classificacao, pressao, glicemia_resultado)
 
